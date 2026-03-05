@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fleet Monitoring Dashboard | Live</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Socket.IO & Chart.js -->
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <h1><i class="fas fa-truck"></i> Live Fleet Monitoring</h1>
+            <div class="live-badge">
+                <span class="pulse"></span> LIVE
+            </div>
+        </header>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-route"></i></div>
+                <div class="stat-content">
+                    <h3>Total Trips</h3>
+                    <p id="totalTrips">0</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                <div class="stat-content">
+                    <h3>Live Drivers</h3>
+                    <p id="liveDrivers">0</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                <div class="stat-content">
+                    <h3>Violation Count</h3>
+                    <p id="violationCount">0</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+                <div class="stat-content">
+                    <h3>Risk Score (Avg)</h3>
+                    <p id="avgRiskScore">0</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="main-grid">
+            <!-- Video Section -->
+            <div class="video-card">
+                <h2><i class="fas fa-video"></i> Live Dashcam Feed</h2>
+                <div class="video-wrapper">
+                    <video width="100%" height="400" autoplay loop muted>
+                        <source src="dashcam.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+
+            <!-- Alerts Column -->
+            <div class="alerts-card">
+                <h2><i class="fas fa-bell"></i> Recent Alerts</h2>
+                <div id="alerts" class="alerts-container"></div>
+            </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="charts-row">
+            <div class="chart-card">
+                <h3><i class="fas fa-chart-bar"></i> Violations by Type</h3>
+                <canvas id="violationChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3><i class="fas fa-wave-square"></i> Risk Score Trend</h3>
+                <canvas id="riskChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Events Table -->
+        <div class="table-card">
+            <h2><i class="fas fa-list"></i> Recent Events</h2>
+            <div class="table-wrapper">
+                <table id="eventsTable">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Driver</th>
+                            <th>Type</th>
+                            <th>Speed</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
