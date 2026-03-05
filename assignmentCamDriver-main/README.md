@@ -71,10 +71,10 @@ The system simulates dashcam events and streams them to the dashboard using WebS
 
 👨‍💻 Author
 
-Rahul Kumar Singh
+chhotu kumar
 
 GitHub:
-https://github.com/RahUlkr23r
+https://github.com/chhtu90alt/Okdriver_Assignment
 
 
 ---
